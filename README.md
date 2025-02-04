@@ -1,5 +1,5 @@
 # DataManager Android SDK
-MobWith SDK 를 이용하여 광고를 노출하는 방법을 제공하고 있습니다.  
+DataManagerSDK 를 이용하여 광고를 노출하는 방법을 제공하고 있습니다.  
 
 
 ## 최신 버전 및 변경사항
