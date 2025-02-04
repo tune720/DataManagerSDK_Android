@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android" >
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#FF000000"
+        android:layout_marginBottom="15dp"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp"
+            android:background="#FFFFFFFF"
+            android:layout_margin="1dp"
+            >
+
+            <!-- 첫 번째 입력 상자 (EditText) -->
+            <EditText
+                android:id="@+id/inputBox1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Input Key" />
+
+            <!-- 두 번째 입력 상자 (EditText, 기본값) -->
+            <EditText
+                android:id="@+id/inputBox2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Input Value" />
+
+            <!-- 스위치 (조건에 따라 표시됨) -->
+            <Switch
+                android:id="@+id/toggleSwitch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Toggle option"
+                android:visibility="gone" />
+
+            <!-- 드롭다운 (Spinner, 조건에 따라 표시됨) -->
+            <Spinner
+                android:id="@+id/dropdown"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone" />
+
+            <!-- 버튼 - 상품 추가를 위한 버튼으로 동작 -->
+            <Button
+                android:id="@+id/button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Add product"
+                android:visibility="gone" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+
+
+
+</merge>

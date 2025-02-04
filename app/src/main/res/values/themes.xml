@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.DataManagerSample" parent="Theme.AppCompat.Light.NoActionBar" />
+
+    <style name="Theme.DataManagerSample.Button" parent="TextAppearance.AppCompat.Button" >
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:textSize">15dp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">#ffffffff</item>
+        <item name="android:background">#FF6200EE</item>
+        <item name="android:backgroundTint">#FF6200EE</item>
+        <item name="android:layout_marginBottom">10dp</item>
+
+    </style>
+
+</resources>
