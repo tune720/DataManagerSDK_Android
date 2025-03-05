@@ -49,6 +49,8 @@ dependencies {
 ```Java
 ENDataManager.init(this, "{ 발급받은 AppKey }");
 ```
+* SDK를 사용하기 전에 반드시 초기화를 진행해 주셔야 합니다.  
+  SDK 초기화 없이 각종 기능 이용시 IllegalArgumentException 이 발생할 수 있습니다.
 
 
 ### 2) 이벤트 생성 및 전달
@@ -114,12 +116,12 @@ ENDataManager.init(this, "{ 발급받은 AppKey }");
 
 ### 3) 이벤트 타입
 | 클래스             | 구분            |        설명         |
-| :-------          | :--------:    | :------------------------ |
+| :-------          | :---------:   | :------------------------ |
 | ENSignIn          |   기본         | 사용자 로그인 |
 | ENSignOut         |   기본         | 회원 탈퇴 |
 | ENSignUp          |   기본         | 회원 가입 |
 | ENModifyUserInfo  |   기본         | 사용자 정보 수정  |
-| ENProduct         |   기본         | 상품관련 이벤트에서 상품정보를 담아준다. |
+| ENProduct         |   기본         | 상품관련 이벤트에서 상품정보를 담아 주기 위해 사용. <br> ENOrder, ENOrderOut, ENOrderCancel에서 사용되며, 별도 이벤트로 처리되지는 않습니다. |
 | ENViewedProduct   |   기본         | 상품에 대한 상세 보기등을 처리하기 위한 이벤트 |
 | ENFavorite        |   기본         | 상품에 대한 좋아요(즐겨찾기) 관련 이벤트  |
 | ENCart            |   기본         | 장바구니 이벤트  |
@@ -154,7 +156,7 @@ ENDataManager.init(this, "{ 발급받은 AppKey }");
   | gender          | 성별  |
   | memberId        | 사용자 아이디  |
   | memberName      | 사용자 이름  |
-  | orderNo         | 주문 번호  |
+  | orderId         | 주문 번호  |
   | paymentAmount   | 총 결제 금액  |
   | paymentMethod   | 결제 수단  |
   | phoneNumber     | 핸드폰(전화) 번호  |
