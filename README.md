@@ -45,7 +45,8 @@ dependencies {
 
 ### 1) SDK 초기화
 
-아래 함수를 통해 SDK를 초기화 시켜 줍니다.  AppKey의 경우 DataManager 관리자 페이지에서 확인 가능 합니다.
+아래 함수를 통해 SDK를 초기화 시켜 줍니다.  
+AppKey의 경우 [DataManager 관리자 페이지(tune720.com)](https://tune720.com)에서 확인 가능 합니다.
 ```Java
 ENDataManager.init(this, "{ 발급받은 AppKey }");
 ```
@@ -58,6 +59,7 @@ ENDataManager.init(this, "{ 발급받은 AppKey }");
   기본 이벤트는 본 SDK를 사용하는데 있어 대표적인 기능들에 대해 미리 생성해둔 이벤트에 해당 합니다.  
   아래와 같이 미리 생성된 클래스를 활용하셔서 이벤트를 생성 전달 하실 수 있습니다.  
   ```Java
+
   ENCart cart = new ENCart();
 
   //기본 파라메터 설정
@@ -73,6 +75,34 @@ ENDataManager.init(this, "{ 발급받은 AppKey }");
 
   //생성된 이벤트 전달
   ENDataManager.getInstance().addEvent(cart);
+
+
+  /**
+   * ENProduct 리스트를 전달하는 경우
+   */
+
+  //ENProduct 생성 및 각 항목값 설정
+  ENProduct product = new ENProduct(); 
+  product.setProductId("product_id");
+  product.setProductName("상품명")
+  ...
+
+  //ArrayList에 추가
+  ArrayList<ENProduct> productArray = new ArrayList<>();
+  productArray.add(product)
+
+  //ENOrder 객체 생성
+  ENOrder order = new ENOrder();
+  order.addProducts(productArray)  // porduct 리스트 설정
+
+  // addProducts()가 없는 객체에서 ENProduct를 설정잎 필요한 경우 아래 방법을 사용할 수 있습니다.
+  // 관리자 페이지 설정에서 products를 받도록 설정하지 않으면 적용이 되지 않는점 참고 바랍니다.
+  order.addCustomData(ENDataManager.Params.products, ArrayList<ENProduct>) 
+  ...
+
+  //생성된 이벤트 전달
+  ENDataManager.getInstance().addEvent(order);
+
   ```
   <br>
 
@@ -113,28 +143,34 @@ ENDataManager.init(this, "{ 발급받은 AppKey }");
   ```
   예시의 경우 Value에서 String데이터를 세팅하도록 되어 있으나 다양한 타입을 지원하고 있습니다.
   <br>
+  <br>
+  <br>
 
 ### 3) 이벤트 타입
-| 클래스             | 구분            |        설명         |
-| :-------          | :---------:   | :------------------------ |
-| ENSignIn          |   기본         | 사용자 로그인 |
-| ENSignOut         |   기본         | 회원 탈퇴 |
-| ENSignUp          |   기본         | 회원 가입 |
-| ENModifyUserInfo  |   기본         | 사용자 정보 수정  |
-| ENProduct         |   기본         | 상품관련 이벤트에서 상품정보를 담아 주기 위해 사용. <br> ENOrder, ENOrderOut, ENOrderCancel에서 사용되며, 별도 이벤트로 처리되지는 않습니다. |
-| ENViewedProduct   |   기본         | 상품에 대한 상세 보기등을 처리하기 위한 이벤트 |
-| ENFavorite        |   기본         | 상품에 대한 좋아요(즐겨찾기) 관련 이벤트  |
-| ENCart            |   기본         | 장바구니 이벤트  |
-| ENOrder           |   기본         | 상품 구매 이벤트(구매 화면으로 이동) |
-| ENOrderCancel     |   기본         | (결제한)구매 취소  |
-| ENOrderOut        |   기본         | 구매 화면에서 결제를 하지 않고 빠져나간 경우 |
-| ENCustomEvent     |   사용자 지정    | 사용자 지정 이벤트  |
-| ENInstall         |   SDK 자체 처리 | 앱 설치 이벤트  |
-| ENVisit           |   SDK 자체 처리 | 앱 실행 (외부에서 앱 진입 등) |
-| ENPageView        |   SDK 자체 처리 | 화면 전환 이벤트 ( Activity 단위 처리) |
-| ENOut             |   SDK 자체 처리 | 앱 종료 이벤트 |
+| 클래스             | 구분            | 필수 <br> 파라메터        |        설명         |
+| :-------          | :---------:   | :-------------:    | :------------------------ |
+| ENSignIn          |   기본         | memberId | 사용자 로그인 |
+| ENSignOut         |   기본         | memberId | 회원 탈퇴 |
+| ENSignUp          |   기본         | memberId | 회원 가입 |
+| ENModifyUserInfo  |   기본         | memberId | 사용자 정보 수정  |
+| ENProduct         |   기본         | productId <br> productName <br> productPrice <br> productQty | 상품관련 이벤트에서 상품정보를 담아 주기 위해 사용. <br> ENOrder, ENOrderOut, ENOrderCancel에서 사용되며, 별도 이벤트로 처리되지는 않습니다. |
+| ENViewedProduct   |   기본         | productId <br> productName <br> productPrice <br> productImageUrl <br> productUrl | 상품에 대한 상세 보기등을 처리하기 위한 이벤트 |
+| ENFavorite        |   기본         | productId <br> productName <br> productPrice <br> productImageUrl <br> productUrl | 상품에 대한 좋아요(즐겨찾기) 관련 이벤트  |
+| ENCart            |   기본         | productId <br> productName <br> productPrice <br> productQty <br> productImageUrl <br> productUrl| 장바구니 이벤트  |
+| ENOrder           |   기본         | orderId <br> totalPrice <br> totalQuantity <br> products | 상품 구매 이벤트(구매 화면으로 이동) |
+| ENOrderCancel     |   기본         | orderId <br> products | (결제한)구매 취소  |
+| ENOrderOut        |   기본         | products | 구매 화면에서 결제를 하지 않고 빠져나간 경우 |
+| ENCustomEvent     |   사용자 지정    | 없음 |  사용자 지정 이벤트  |
+| ENInstall         |   SDK 자체 처리 | 없음  | 앱 설치 이벤트  |
+| ENVisit           |   SDK 자체 처리 | 없음 | 앱 실행 (외부에서 앱 진입 등) |
+| ENPageView        |   SDK 자체 처리 | 없음  | 화면 전환 이벤트 ( Activity 단위 처리) |
+| ENOut             |   SDK 자체 처리 | 없음 | 앱 종료 이벤트 |
  
 * SDK 자체 처리 타입의 경우 특별한 경우가 아니라면 직접 이벤트를 만들어서 전달하실 필요가 없습니다.
+* 필수 파라메터의 경우 반드시 지정되어야 하는 값 입니다.  해당값을 할당하기 위한 함수들이 있으며 해당 함수를 통해 값을 지정해주시면 됩니다.
+* 필수 파라메터가 없는 경우 각 클래스 생성시 받는 값외에 반드시 지정해주어야 할 값들이 없는 경우 입니다.
+* 파라메터에서 products의 경우 이벤트 클래스의 addProducts(ArrayList<ENProduct> products)를 이용하시거나,  
+  addCustomData(ENDataManager.Params.products, ArrayList<ENProduct>) 를 사용하시면 됩니다.
 <br><br>
 
 
@@ -172,6 +208,7 @@ ENDataManager.init(this, "{ 발급받은 AppKey }");
   | address         | 집 주소  |
   | totalPrice      | 상품 총 가격  |
   | totalQuantity   | 상품 총 수량  |
+<br>
 
 
 ### 5) WebView를 사용하는 하이브리드 앱에서의 설정
@@ -216,10 +253,27 @@ ENDataManager.getInstance().setWebView(webView, url);
 webView.loadUrl(url);
 
 ```
+<br>
+<br>
+
+### 6) ENPageView 이벤트
+ENPageView 이벤트는 화면전환에 대한 이벤트로, SDK에서 직접 처리하고 있으나 Activity를 기반으로 동작합니다.  
+따라서 앱내 페이지 전환등이 하나의 Activity안에서 Fragment를 기반으로 이루어지거나 이와 유사하게 동작하는 경우,  
+화면 전환에 대한 이벤트가 제대로 확인되지 않을 수 있습니다.
+만약 화면 전환등이 Activity를 기반으로 발생하지 않는 경우 아래와 같이 별도로 이벤트를 추가하여 화면 전환에 대한 이벤트를 추적해야 합니다.
+```Java
+
+ENPageView pageView = new ENPageView("현재 노출된 화면 이름", "이전에 노출된 화면 이름");
+ENDataManager.getInstance().addEvent(pageView);
+
+```
+* Activity에서 처음열린 Fragment등, 이전에 노출된 화면 이름을 특별히 지정하기 어려운 경우 빈값 또는 Activity 이름을 지정하시면 됩니다.
 
 
+<br>
+<br>
 
-### 6) Sample 앱에 대하여  
+### 7) Sample 앱에 대하여  
 본 SDK를 사용하는 방법에 대한 예시 앱으로 참고 하시면 됩니다.
 
 
