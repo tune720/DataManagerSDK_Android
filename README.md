@@ -46,9 +46,9 @@ dependencies {
 ### 1) SDK 초기화
 
 아래 함수를 통해 SDK를 초기화 시켜 줍니다.  
-AppKey의 경우 [DataManager 관리자 페이지(tune720.com)](https://tune720.com)에서 확인 가능 합니다.
+서비스 키의 경우 [DataManager 관리자 페이지(tune720.com)](https://tune720.com)에서 확인 가능 합니다.
 ```Java
-ENDataManager.init(this, "{ 발급받은 AppKey }");
+ENDataManager.init(this, "{ 서비스키 }");
 ```
 * SDK를 사용하기 전에 반드시 초기화를 진행해 주셔야 합니다.  
   SDK 초기화 없이 각종 기능 이용시 IllegalArgumentException 이 발생할 수 있습니다.
