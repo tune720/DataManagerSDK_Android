@@ -3,7 +3,7 @@ DataManagerSDK 를 이용하여 광고를 노출하는 방법을 제공하고 �
 
 
 ## 최신 버전 및 변경사항
-- 최신버전 : 1.0.2
+- 최신버전 : 1.0.3
 - 변경사항 : Bug Fix
 <br>
 
@@ -253,6 +253,7 @@ ENDataManager.getInstance().setWebView(webView, url);
 webView.loadUrl(url);
 
 ```
+
 <br>
 <br>
 
@@ -284,6 +285,7 @@ ENDataManager.getInstance().addEvent(pageView);
 # DataManager Android SDK Release History
  | version |        Description        |
  | :-----: | :------------------------ |
+ | 1.0.3   |  Bug Fix        |
  | 1.0.2   |  Bug Fix        |
  | 1.0.1   |  Bug Fix        |
  | 1.0.0   |  최초 배포        |
