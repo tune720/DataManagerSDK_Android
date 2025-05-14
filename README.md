@@ -31,13 +31,19 @@ allprojects {
 ```XML
 dependencies {
   ...
-  implementation 'io.github.tune720:DataManagerSDK:1.0.2' 
+  implementation 'io.github.tune720:DataManagerSDK:1.0.3' 
 
   implementation 'com.google.android.gms:play-services-ads-identifier:17.0.0'
   implementation 'com.android.installreferrer:installreferrer:2.2'
 
   ...
 }
+```
+만약, 빌드시 gradle dependencies에 의한 오류 발생시 아래를 참고하시기 바랍니다.
+```XML
+  implementation 'io.github.tune720:DataManagerSDK:1.0.3' {
+    transitive = false
+  }
 ```
 
 
@@ -165,6 +171,7 @@ ENDataManager.init(this, "{ 서비스키 }");
 | ENVisit           |   SDK 자체 처리 | 없음 | 앱 실행 (외부에서 앱 진입 등) |
 | ENPageView        |   SDK 자체 처리 | 없음  | 화면 전환 이벤트 ( Activity 단위 처리) |
 | ENOut             |   SDK 자체 처리 | 없음 | 앱 종료 이벤트 |
+| ENDeepLinkOpen    |   SDK 자체 처리 | 없음 | DeepLink를 통한 앱 실행 이벤트 |
  
 * SDK 자체 처리 타입의 경우 특별한 경우가 아니라면 직접 이벤트를 만들어서 전달하실 필요가 없습니다.
 * 필수 파라메터의 경우 반드시 지정되어야 하는 값 입니다.  해당값을 할당하기 위한 함수들이 있으며 해당 함수를 통해 값을 지정해주시면 됩니다.
