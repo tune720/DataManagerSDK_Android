@@ -3,7 +3,7 @@ DataManagerSDK 를 이용하여 광고를 노출하는 방법을 제공하고 �
 
 
 ## 최신 버전 및 변경사항
-- 최신버전 : 1.0.3
+- 최신버전 : 1.0.4
 - 변경사항 : Bug Fix
 <br>
 
@@ -31,7 +31,7 @@ allprojects {
 ```XML
 dependencies {
   ...
-  implementation 'io.github.tune720:DataManagerSDK:1.0.3' 
+  implementation 'io.github.tune720:DataManagerSDK:1.0.4' 
 
   implementation 'com.google.android.gms:play-services-ads-identifier:17.0.0'
   implementation 'com.android.installreferrer:installreferrer:2.2'
@@ -41,7 +41,7 @@ dependencies {
 ```
 만약, 빌드시 gradle dependencies에 의한 오류 발생시 아래를 참고하시기 바랍니다.
 ```XML
-  implementation 'io.github.tune720:DataManagerSDK:1.0.3' {
+  implementation 'io.github.tune720:DataManagerSDK:1.0.4' {
     transitive = false
   }
 ```
@@ -292,6 +292,7 @@ ENDataManager.getInstance().addEvent(pageView);
 # DataManager Android SDK Release History
  | version |        Description        |
  | :-----: | :------------------------ |
+ | 1.0.4   |  Bug Fix        |
  | 1.0.3   |  Bug Fix        |
  | 1.0.2   |  Bug Fix        |
  | 1.0.1   |  Bug Fix        |
